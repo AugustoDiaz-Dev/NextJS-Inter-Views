@@ -1,0 +1,66 @@
+---
+title: JavaScript Advanced
+tags:
+  - Js
+  - JavaScript
+  - Front-End
+date: 2000-07-25
+categories: "general" 
+excerpt: JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive. Where HTML and CSS are languages that give structure and style to web pages, JavaScript gives web pages interactive elements that engage a user.
+---
+<span style={{color: "var(--myOrange)"}}>
+*Note:* In Advanced I selected some contents that might present some comprehension difficulty, longer explanations or simply are weird or tricky questions. Good luck!
+</span>
+
+## 1- What is the difference between ViewState and SessionState?
+
+- "ViewState" is specific to a page in a session.
+- "SessionState" is specific to user-specific data that can be accessed across all web application pages.
+
+## 2- How to detect the operating system on the client machine?
+
+In order to detect the operating system on the client machine, the navigator. Platform string (property) should be used.
+
+<Image src="/images/navigator.png" width={728} height={109} className="borderRadius"/>
+
+## 3- What is the use of Void (0)?
+
+Void(0) is used to prevent the page from refreshing, and parameter “zero” is passed while calling.
+
+Void(0) is used to call another method without refreshing the page.
+
+## 4- What are JS Cookies?
+
+Cookies are the small test files stored in a computer, and they get created when the user visits the websites to store information that they need. For example: user, name, details and shopping cart information from previous visits.
+
+## 5-  Does JS has concept level scope?
+
+JS does not have concept-level scope. The variable declared inside the function has scope inside the function.
+
+## 6- Which keywords are used to handle exceptions?
+
+The try...catch...finally statements combo handles errors without stopping JavaScript. The technical term for this is is: JavaScript throws an exception.JS creates an Error object with two properties: name and message.
+```js
+try {
+  tryCode - Code block to run.
+}
+catch(err) {
+  catchCode - Code block to handle errors.
+}
+finally {
+  finallyCode - Code block to be executed regardless of the try result.
+}
+```
+Using throw with try and catch, lets you control program flow and generate custom error messages.
+
+## 7- Which keyword is used to print text on the screen? 
+
+document.write("Welcome"); is used to print the text–Welcome on the screen.
+
+## 8- What are the different types of errors?
+
+In JS here are three types of errors:
+
+- **Load time errors**: Errors that come up when loading a web page, like improper syntax errors, are known as Load time errors and generate the errors dynamically.
+- **Runtime errors**: Errors that come due to misuse of the command inside the HTML language.
+- **Logical Errors**: These are the errors that occur due to the bad logic performed on a function with a different operation.

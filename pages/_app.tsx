@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Link href="/">
           <AiFillHome size={32} color="var(--myBlue)" />
         </Link>
-
       </nav>
       <Component {...pageProps} />
     </div>

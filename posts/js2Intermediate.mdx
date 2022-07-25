@@ -1,0 +1,51 @@
+---
+title: JavaScript Intermediate
+tags:
+  - Js
+  - JavaScript
+  - Front-End
+date: 2000-07-25
+categories: "general" 
+excerpt: JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive. Where HTML and CSS are languages that give structure and style to web pages, JavaScript gives web pages interactive elements that engage a user.
+---
+
+## 1- Why do we use the word “debugger” in JS?
+
+The debugger for the browser must be activated in order to debug the code. Built-in debuggers may be switched on and off, requiring the user to report faults. The remaining section of the code should stop execution before moving on to the next line while debugging.
+
+## 2- Difference between var and let keyword in JS.
+
+Some differences are: 
+
+- From the very beginning, the 'var' keyword was used in JavaScript programming whereas the keyword 'let' was just added in 2015.
+
+- The keyword 'Var' has function scope. Anywhere in the function, the variable specified using var is accessible but in ‘let’ the scope of a variable declared with the 'let' keyword is limited to the block in which it is declared. Let's start with a Block Scope.
+
+- 'var' declares a variable that will be hoisted but 'let' declares a variable that will not be hoisted.
+
+## 3- How are used timers?
+
+Timers are used to execute a piece of code at a set time or repeat the code in a given interval. This is done by using the functions setTimeout, setInterval, and clearInterval.
+
+The setTimeout(function, delay) function is used to start a timer that calls a particular function after the mentioned delay. The setInterval(function, delay) function repeatedly executes the given function in the mentioned delay and only halts when canceled. The clearInterval(id) function instructs the timer to stop.
+
+Timers are operated within a single thread, and thus events might queue up, waiting to be executed.
+
+## 4- Array methods: pop(), push(), shift(), unshift(). 
+
+- pop(), 
+- push(), 
+- shift(), 
+- unshift().
+
+(COMPLETAR)
+
+## 5- What are the disadvantages of using innerHTML?
+
+If you use innerHTML, the disadvantages are:
+
+- Content is replaced everywhere.
+- We cannot use it like “appending to innerHTML.
+- Even if you use +=like “innerHTML = innerHTML + ‘html'” still the old content is replaced by html.
+- The entire innerHTML content is re-parsed and builds into elements. Therefore, it’s much slower.
+- The innerHTML does not provide validation, and therefore we can potentially insert valid and broken HTML in the document and break it.

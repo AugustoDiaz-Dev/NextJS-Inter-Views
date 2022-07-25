@@ -8,11 +8,6 @@
   margin-bottom: 2rem;
 }
 
-.title {
-  font-size: 1.25rem;
-  color: var(--myGreen)
-}
-
 .tags {
   font-size: 0.75rem;
   color: var(--myYellow)
