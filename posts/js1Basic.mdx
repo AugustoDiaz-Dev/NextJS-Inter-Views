@@ -1,0 +1,147 @@
+---
+title: JavaScript Basic
+tags:
+  - Js
+  - JavaScript
+  - Front-End
+date: 2000-07-25
+categories: "general" 
+excerpt: JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive. Where HTML and CSS are languages that give structure and style to web pages, JavaScript gives web pages interactive elements that engage a user.
+---
+
+## 1- What is JavaScript(JS)?
+
+[<span className="link">JavaScript</span>](https://en.wikipedia.org/wiki/JavaScript) is a client-side and server-side (NodeJS) scripting language inserted into HTML pages. It is understood by web browsers. JavaScript is also an Object-based Programming language, dynamic typed and case sensitive.
+
+<Image src="/images/logoJs.png" width={128} height={128} className="borderRadius"/>
+
+## 2- What are the different data types in JS?
+
+### Primitives (single values): 
+- String 
+- Number
+- BigInt 
+- Boolean 
+- Undefined 
+- Null
+- Symbol 
+
+### Non-Primitives (multiple and complex values):  
+- Objects 
+
+Note: It is important to remember that any data type that is not a primitive data type, is of "Object type" in JS.
+
+*Examples:* 
+<Image src="/images/dataTypes.png" width={540} height={171} className="borderRadius"/>
+
+## 3- What is negative Infinity?
+
+Negative Infinity is a number in JavaScript which can be derived by dividing negative number by zero.
+
+(Add Example)
+
+## 4- Explain Hoisting.
+
+Hoisting is the default behavior of javascript where all the variable and function declarations are moved on top. This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
+
+*Example 1:*
+```js
+hoistedVariable = 3;
+console.log(hoistedVariable); // Outputs 3, even when the variable is declared after it is initialized.	
+var hoistedVariable;
+```
+*Example 2:*
+```js
+hoistedFunction();  // Outputs " Hello world! ", even when the function is declared after calling.
+
+function hoistedFunction(){ 
+  console.log(" Hello world! ");
+} 
+```
+*Example 3:*
+```js
+// Hoisting takes place in the local scope as well.
+function doSomething(){
+  x = 33;
+  console.log(x);
+  var x;
+}
+```
+*Example 4:*
+```js
+var x;
+console.log(x); // Outputs "undefined" since the initialization of "x" is not hoisted.
+x = 23;
+```
+*Example 5:*
+```js
+"use strict";
+x = 23; // Gives an error since 'x' is not declared.
+var x;
+```
+## 5- Explain "Implicit Type Coercion".
+
+Implicit type coercion in javascript is the automatic conversion of value from one data type to another. It takes place when the operands of an expression are of different data types.
+
+## 6- Is JS static or dynamic typed language?
+
+JS is a dynamically typed language because the type of a variable is checked during run-time in contrast to a statically typed language, where the type of a variable is checked during compilation-time. Since JS is a loosely (dynamically) typed language, variables in JS are not associated with any type. A variable can hold the value of any data type.
+
+## 7- How can you convert the string of any base to an integer?
+
+The parseInt() function is used to convert numbers between different bases. parseInt() takes the string to be converted as its first parameter. The second parameter is the base of the given string.
+To convert 4F (or base 16) to integer, the code used will be:
+```js
+parseInt("4F", 16);
+```
+
+## 8- Difference between " == " and " === " operators.
+
+Both are comparison operators. The difference between both the operators is that “==” is used to compare values whereas, “ === “ is used to compare both values and types.
+```js
+var x = 2;
+var y = "2";
+(x == y)  // Returns true since the value of both x and y is the same
+(x === y) // Returns false since the typeof x is "number" and typeof y is "string"
+```
+
+## 9- What is the use of isNan function?
+
+<span className="yellowHighlight">isNan </span>function returns true if the argument is not a number; otherwise, it is false.
+
+## 10- What is NaN property?
+
+NaN property represents the “Not-a-Number” value. It indicates a value that is not a legal number.
+
+typeof of NaN will return a Number.
+
+To check if a value is NaN, we use the isNaN() function,
+
+Note: isNaN() function converts the given value to a Number type, and then equates to NaN.
+
+<Image src="/images/NaN.png" width={768} height={148} className="borderRadius"/>
+
+## 11- What are undeclared and undefined variables?
+
+Undeclared variables are those that do not exist in a program and are not declared. If the program tries to read the value of an undeclared variable, then a runtime error is encountered.
+
+Undefined variables are those that are declared in the program but have not been given any value. If the program tries to read the value of an undefined variable, an undefined value is returned.
+
+## 12- What does it mean NULL?
+
+The NULL value is used to represent no value or no object. It implies no object or null string, no valid boolean value, no number, and no array object.
+
+## 13- What does it mean undefined?
+
+Undefined value means the: 
+- variable used in the code doesn’t exist
+- variable is not assigned to any value
+- property does not exist.
+
+## 14- What are all the types of Pop up boxes available?
+- Prompt: Input field for the user to introduce some data.
+- Alert: displays only one button, which is the OK button.
+- Confirm: displays two buttons, namely OK and Cancel.
+
+
+## 15- 

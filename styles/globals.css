@@ -1,3 +1,4 @@
+/* Color Palette */
 :root {
   --myYellow: #ffff00;
   --myLightBlue: #61dafb;
@@ -14,6 +15,12 @@
   color: black;
   font-weight: bold;
 }
+.link {
+  text-decoration: underline;
+  color: var(--myBlue);
+  font-weight: bold;
+}
+/* Setups */
 html,
 body {
   padding: 0;
@@ -27,22 +34,22 @@ body {
 * {
   box-sizing: border-box;
 }
-
 a {
   color: inherit;
   text-decoration: none;
 }
-
+h1 {
+  text-align: center;
+}
 h1, h2 {
   color: var(--myGreen);
 }
 h3 {
-  color: var(--myViolet);
+  color: var(--myLightBlue);
 }
 p {
   color: var(--white);
 }
-
 li {
   list-style: none;
 }
@@ -51,7 +58,7 @@ li {
   margin: 0 auto;
   padding: 1rem;
 }
-
-nav {
-  padding-bottom: 2rem;
+.borderRadius {
+  border-radius: 0.5rem;
 }
+
