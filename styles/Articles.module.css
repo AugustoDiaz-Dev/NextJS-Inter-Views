@@ -1,0 +1,25 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  color: var(--myGreen)
+}
+
+.tags {
+  font-size: 0.75rem;
+  color: var(--myYellow)
+}
+.tags a:after {
+  content: " - ";
+}
+.tags a:last-child:after {
+  content: "";
+}
