@@ -10,9 +10,14 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Inter-Views</title>
       </Head>
-      <nav>
+      <nav >
         <Link href="/">
-          <AiFillHome size={32} color="var(--myBlue)" />
+          <>
+            <p style={{ display: "flex", justifyContent: "end", alignItems: "center" }} className="navBtn">
+              Home&nbsp;
+              <AiFillHome size={32} color="var(--myBlue)" />
+            </p>
+          </>
         </Link>
       </nav>
       <Component {...pageProps} />

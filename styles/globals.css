@@ -40,15 +40,14 @@ a {
 }
 h1 {
   text-align: center;
+  font-size: 3rem;
+  color: var(--myViolet);
 }
-h1, h2 {
+h2 {
   color: var(--myGreen);
 }
 h3 {
   color: var(--myLightBlue);
-}
-p {
-  color: var(--white);
 }
 li {
   list-style: none;
@@ -60,5 +59,8 @@ li {
 }
 .borderRadius {
   border-radius: 0.5rem;
+}
+.navBtn {
+  cursor: pointer;
 }
 

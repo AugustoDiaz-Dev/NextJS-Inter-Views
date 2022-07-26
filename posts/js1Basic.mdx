@@ -143,5 +143,51 @@ Undefined value means the:
 - Alert: displays only one button, which is the OK button.
 - Confirm: displays two buttons, namely OK and Cancel.
 
+## 15-  What are the important properties of an anonymous function?
 
-## 15- 
+A function that is declared without any named identifier is known as an anonymous function. In general, an anonymous function is inaccessible after its declaration.
+
+```js
+var anonymous = function() {
+    alert('I am anonymous');
+};
+anonymous();
+```
+
+## 16- Is JS case sensitive? Give an example.
+
+Yes, JavaScript is case-sensitive. For example, a function parseInt is not the same as the function Parseint.
+
+## 17- How is the DOM utilized?
+
+DOM stands for "*Document Object Model*" and is responsible for how various objects in a document interact with each other. DOM is required for developing web pages, which includes objects like paragraphs, headings, links, etc. These objects can be operated to include actions like add or delete. DOM is also required to add extra capabilities to a web page. On top of that, the use of API gives an advantage over other existing models.
+
+## 18- How are event handlers utilized?
+
+HTML events are "things" that happen to HTML elements. When JS is used in HTML pages, JS can "react" on these events.
+
+Events are the actions that result from activities: 
+
+- An HTML web page has finished loading
+- An HTML input field was changed
+- An HTML button was clicked
+
+An event handler is required to manage the proper execution of all these events. Event handlers are an extra attribute of the object. This attribute includes the event’s name and the action taken if the event takes place.
+
+```html
+<button onclick="this.innerHTML = Date()">What time is it?</button>
+```
+
+## 19- What is ECMAScript? 
+
+ECMA means "European Computer Manufacturers Association". It is a non-profit organization that develops standards in computer hardware, communications, and programming languages.
+
+ECMAScript is a JS standard meant to ensure the interoperability of web pages across different web browsers. It is standardized by Ecma International according to the document ECMA-262.
+
+ECMA Script is like rules and guidelines, while JS is a scripting language used for web development.
+
+## 20- When to Use Internal and External JavaScript Code?
+
+Suppose you have only a few lines of code that is specific to a particular webpage. In that case, it is better to keep your JS code internal within your HTML document.
+
+On the other hand, if your JS code is used in many web pages, you should consider keeping your code in a separate file. If you wish to make some changes to your code, you have to change only one file, making code maintenance easy. If your code is too long, it is better to keep it in a separate file. This helps in easy debugging.

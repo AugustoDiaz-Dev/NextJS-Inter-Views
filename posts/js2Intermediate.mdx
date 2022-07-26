@@ -9,6 +9,10 @@ categories: "general"
 excerpt: JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive. Where HTML and CSS are languages that give structure and style to web pages, JavaScript gives web pages interactive elements that engage a user.
 ---
 
+<span style={{color: "var(--myOrange)"}}>
+*Note:* I selected some contents I believe are not critically basic and also most of the ES6 features might be covered in this section.
+</span>
+
 ## 1- Why do we use the word “debugger” in JS?
 
 The debugger for the browser must be activated in order to debug the code. Built-in debuggers may be switched on and off, requiring the user to report faults. The remaining section of the code should stop execution before moving on to the next line while debugging.
@@ -33,14 +37,15 @@ Timers are operated within a single thread, and thus events might queue up, wait
 
 ## 4- Array methods: pop(), push(), shift(), unshift(). 
 
-- pop(), 
-- push(), 
-- shift(), 
-- unshift().
+- unshift(): is like the push method, which works at the beginning of the array. This method is used to prepend one or more elements to the beginning of the array.
+- push(): is used to add or append one or more elements to an Array end. Using this method, we can append multiple elements by passing multiple arguments.
+- shift(): takes the first element off of a given array and returns it. The array on which it is called is then altered.
+- pop(): is similar to the shift() method, but the difference is that the Shift method works at the array’s start. The pop() method takes the last element off of the given array and returns it. The array on which it is called is then altered.
 
-(COMPLETAR)
 
 ## 5- What are the disadvantages of using innerHTML?
+
+innerHTML content is refreshed every time and thus is slower. There is no scope for validation in innerHTML. Therefore, it is easier to insert rogue code in the document and make the web page unstable.
 
 If you use innerHTML, the disadvantages are:
 
@@ -49,3 +54,108 @@ If you use innerHTML, the disadvantages are:
 - Even if you use +=like “innerHTML = innerHTML + ‘html'” still the old content is replaced by html.
 - The entire innerHTML content is re-parsed and builds into elements. Therefore, it’s much slower.
 - The innerHTML does not provide validation, and therefore we can potentially insert valid and broken HTML in the document and break it.
+
+## 6- What is the difference between .call() and .apply()?
+
+The function .call() and .apply() are very similar in their usage except a little difference. .call() is used when the number of the function’s arguments are known to the programmer, as they have to be mentioned as arguments in the call statement. On the other hand, .apply() is used when the number is not known. The function .apply() expects the argument to be an array.
+
+The basic difference between .call() and .apply() is in the way arguments are passed to the function. Their usage can be illustrated by the given example.
+
+```js
+var someObject = {
+myProperty : 'Foo',
+
+myMethod : function(prefix, postfix) {
+
+    alert(prefix + this.myProperty + postfix);
+}
+};
+someObject.myMethod('<', '>'); // alerts '<Foo>'
+var someOtherObject  = {
+
+    myProperty : 'Bar.'
+
+};
+someObject.myMethod.call(someOtherObject, '<', '>'); // alerts '<Bar>'
+
+someObject.myMethod.apply(someOtherObject, ['<', '>']); // alerts '<Bar>'
+```
+
+## 7- What is the role of deferred scripts?
+
+The HTML code’s parsing during page loading is paused by default until the script has not stopped executing. If the server is slow or the script is particularly heavy, then the web page is delayed.
+
+While using Deferred, scripts delays execution of the script till the time the HTML parser is running. This reduces the loading time of web pages, and they get displayed faster.
+
+## 8- What are the various functional components?
+
+- **First-class functions:** Functions in JS are utilized as first-class objects. This usually means that these functions can be passed as arguments to other functions, returned as values from other functions, assigned to variables, or can also be stored in data structures.
+
+- **Nested functions:** The functions, which are defined inside other functions, are called "Nested Functions". They are called every time the main function is invoked.
+
+## 9- How to use Loops?
+
+Loops are useful when you repeatedly execute the same lines of code a specific number of times or as long as a specific condition is true. 
+
+Suppose you want to type a "Hello" message 100 times on your webpage. You will have to copy and paste the same line 100 times or, instead, you can complete this task in a few lines using loops.
+
+Types of loops in JS: 
+
+- for loop
+
+- for/in a loop (explained later)
+
+- while loop
+
+- do…while loop
+
+### for loop
+```html
+<html>
+<head>
+    <script type="text/javascript">
+        var students = new Array("John", "Ann", "Aaron", "Edwin", "Elizabeth");
+        document.write("<b>Using for loops </b><br />");
+        for (i=0;i<students.length;i++)
+        {
+        document.write(students[i] + "<br />");
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
+}
+```
+
+### while loop
+
+(add example)
+
+The “while loop” is executed as long as the specified condition is true. Inside the while loop, you should include the statement that will end the loop at some point in time. Otherwise, your loop will never end, and your browser may crash.
+
+### do…while loop
+
+```html
+<html>
+<head>
+    <script type="text/javascript">
+        document.write("<b>Using while loops </b><br />");
+        var i = 0, j = 1, k;
+        document.write("Fibonacci series less than 40<br />");
+        while(i<40)
+        {
+            document.write(i + "<br />");
+            k = i+j;
+            i = j;
+            j = k;
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
+```
+
+The do…while loop is very similar to the while loop. The only difference is that in do…while loop, the block of code gets executed once even before checking the condition.
+
