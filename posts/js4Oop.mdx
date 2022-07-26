@@ -13,8 +13,61 @@ excerpt: JavaScript is a text-based programming language used both on the client
 
 [<span className="link">JavaScript</span>](https://en.wikipedia.org/wiki/JavaScript) is not a class-based object-oriented language. But it still has ways of using Object Oriented Programming (OOP). Class-based programming is a style of Object-oriented programming (OOP) in which inheritance occurs via defining classes of objects, instead of inheritance occurring via the objects alone. 
 
+Many times, variables or arrays are not sufficient to simulate real-life situations. JS allows you to create objects that act like real-life objects. A student or a home can be an object that has many unique characteristics of its own. You can create properties and methods for your objects to make programming easier. If your object is a student, it will have properties like the first name, last name, id, etc., and methods like calculating rank, change address, etc. If your object is a home, it will have properties like a number of rooms, paint color, location, etc. The methods like to calculate area, change owner, etc.
+
+You can create an object like this:
+
+```js
+var objName = new		Object();
+objName.property1 = value1;
+objName.property2 = value2;
+objName.method1 = function()
+{
+line of code	
+}
+```
+
+OR 
+
+```js 
+var objName= {property1:value1, property2:value2, method1: function()
+
+{ //lines of code} };
+```
+
 ## 2- What is "this" keyword?
 
 This keyword refers to the object from where it was called.
 
-## 3-
+## 3- How are object properties assigned?
+
+Properties are assigned to objects with dot or bracket notation: 
+
+```js
+obj ["class"] = 12; // Bracket notation (useful when you have names with hyphens).
+or
+obj.class = 12; // Dot notation.
+```
+
+## 4- How can you loop through the properties of an object? 
+
+The for/in a loop is usually used to loop through the properties of an object. You can give any name for the variable, but the object’s name should be the same as an already existing object you need to loop through.
+
+```html
+<html>
+<head>
+    <script type="text/javascript">
+        var employee={first:"John", last:"Doe", department:"Accounts"};
+		var		details = "";
+		document.write("<b>Using for/in loops </b><br />");
+        for (var x in employee)
+        {
+		details = x + ": " + employee[x];
+		document.write(details + "<br />");
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
+```

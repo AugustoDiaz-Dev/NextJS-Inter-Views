@@ -1,0 +1,55 @@
+---
+title: JS Testing
+tags:
+  - Js
+  - JavaScript
+  - Front-End
+date: 2000-07-25
+categories: "general" 
+excerpt: JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive. Where HTML and CSS are languages that give structure and style to web pages, JavaScript gives web pages interactive elements that engage a user.
+---
+
+## 1- hat is JS Unit Testing, and what are the challenges in JS Unit Testing?
+
+JS Unit Testing is a testing method in which JS tests code written for a web page or web application module. It is combined with HTML as an inline event handler and executed in the browser to test if all functionalities work fine. These unit tests are then organized in the test suite.
+
+Every suite contains several tests designed to be executed for a separate module. Most importantly, they don’t conflict with any other module and run with fewer dependencies on each other (some critical situations may cause dependencies).
+
+### Challenges of JS Unit Testing:
+
+- Many other languages support unit testing in browsers, in the stable as well as in runtime environment, but JS can not.
+- You can understand some system actions with other languages, but this is not the case with JS.
+- Some JS are written for a web application that may have multiple dependencies.
+- JS is good to use in combination with HTML and CSS rather than on the web.
+- Difficulties with page rendering and DOM manipulation.
+- Sometimes you find an error message on your screen regarding "Unable to load example.js" or any other JS error regarding version control. These vulnerabilities come under Unit Testing JS.
+
+### Solutions of JS Unit Testing:
+
+- Do not use global variables.
+- Do not manipulate predefined objects.
+- Design core functionalities based on the library.
+- Try to create small pieces of functionalities with lesser dependencies.
+
+## 2- What are some important JS Unit Testing Frameworks?
+
+### Jest 
+Facebook uses jest so far to test all the JavaScript code. It provides the ‘zero-configuration testing experience. Supports independent and non-interrupting running tests without any conflict. Do not require any other setup configuration and libraries.
+
+### Mocha 
+Mocha runs on Node.js and in the browser. Mocha performs asynchronous testing more simply. Provides accuracy and flexibility in reporting. Provides tremendous support of rich features such as test-specific timeouts, JavaScript APIs.
+
+### Unit.js 
+It is known as an open-source assertion library running on browser and Node.js. It is extremely compatible with other JavaScript Unit Testing frameworks like Mocha, Karma, Jasmine, QUnit, Protractor, etc. Provides the full documented API of assertion list.
+
+### QUnit
+It is used for both client-side and server-side JavaScript Unit Testing. This Free JavaScript testing framework is used for jQuery projects. It follows Common JS unit testing Specification for unit testing in JavaScript. It supports the Node Long-term Support Schedule.
+
+### Jasmine 
+Jasmine is the behavior-driven development framework to unit test JavaScript. It is used for testing both synchronous and asynchronous JavaScript codes. It does not require DOM and comes with an easy syntax that can be written for any test.
+
+### Karma 
+Karma is an open-source productive testing environment. Easy workflow control running on the command line. Offers the freedom to write the tests with Jasmine, Mocha, and QUnit. You can run the test on real devices with easy debugging.
+
+### AVA 
+AVA is a simple JavaScript Unit Testing Framework. Tests are being run in parallel and serially. Parallel tests run without interrupting each other. This testing framework supports asynchronous testing as well. AVA uses subprocesses to run the unit test JavaScript.

@@ -33,6 +33,80 @@ Void(0) is used to call another method without refreshing the page.
 
 Cookies are the small test files stored in a computer, and they get created when the user visits the websites to store information that they need. For example: user, name, details and shopping cart information from previous visits.
 
+A cookie is a piece of data stored on your computer to be accessed by your browser. You also might have enjoyed the benefits of cookies knowingly or unknowingly. Have you ever saved your Facebook password so that you do not have to type it every time you try to login? If yes, then you are using cookies. Cookies are saved as key/value pairs.
+
+### JS Set-Cookie
+```js
+document.cookie = "cookiename=cookievalue"
+```
+You can even add an expiry date to your Cookie to remove the particular Cookie from the computer on the specified date. The expiry date should be set in the UTC/GMT format. If you do not set the expiry date, the cookie will be removed when the user closes the browser.
+```js
+document.cookie = "cookiename=cookievalue; expires= Thu, 21 Aug 2014 20:00:00 UTC"
+```
+You can also set the domain and path to specify which domain and to which directories in the specific domain the Cookie belongs to. By default, a cookie belongs to the page that sets the Cookie.
+```js
+document.cookie = "cookiename=cookievalue; expires= Thu, 21 Aug 2014 20:00:00 UTC; path=/
+```
+//create a cookie with a domain to the current page and a path to the entire domain.
+
+### JS get Cookie
+
+You can access the Cookie like this, which will return all the cookies saved for the current domain:
+```js
+var x =  document.cookie
+```
+
+### JS delete Cookie
+
+To delete a cookie, you just need to set the cookie’s value to empty and set the value of expires to a passed date.
+```html
+<html>
+<head>
+    <title>Cookie!!!</title>
+    <script type="text/javascript">
+        function createCookie(cookieName,cookieValue,daysToExpire)
+        {
+          var date = new Date();
+          date.setTime(date.getTime()+(daysToExpire*24*60*60*1000));
+          document.cookie = cookieName + "=" + cookieValue + "; expires=" + date.toGMTString();
+        }
+        function accessCookie(cookieName)
+        {
+          var name = cookieName + "=";
+          var allCookieArray = document.cookie.split(';');
+          for(var i=0; i<allCookieArray.length; i++)
+          {
+            var temp = allCookieArray[i].trim();
+            if (temp.indexOf(name)==0)
+            return temp.substring(name.length,temp.length);
+             }
+            return "";
+        }
+        function checkCookie()
+        {
+          var user = accessCookie("testCookie");
+          if (user!="")
+            alert("Welcome Back " + user + "!!!");
+          else
+          {
+            user = prompt("Please enter your name");
+            num = prompt("How many days you want to store your name on your computer?");
+            It (user!="" && user!=null)
+            {
+            createCookie("testCookie", user, num);
+            }
+          }
+        }
+    </script>
+</head>
+<body onload="checkCookie()"></body>
+</html>
+```
+
+
+
+
+
 ## 5-  Does JS has concept level scope?
 
 JS does not have concept-level scope. The variable declared inside the function has scope inside the function.
@@ -64,3 +138,114 @@ In JS here are three types of errors:
 - **Load time errors**: Errors that come up when loading a web page, like improper syntax errors, are known as Load time errors and generate the errors dynamically.
 - **Runtime errors**: Errors that come due to misuse of the command inside the HTML language.
 - **Logical Errors**: These are the errors that occur due to the bad logic performed on a function with a different operation.
+
+## 9- What is the "Strict Mode", and how can it be enabled?
+
+Under the strict Mode, JS shows errors for a piece of code, which did not show an error before, but might be problematic and potentially unsafe. Strict Mode also solves some mistakes that hamper the JS engines from working efficiently.
+
+Strict mode can be enabled by adding the string literal "use strict" above the file:
+
+```js
+function myfunction() {
+    "use strict;"
+    var v = "This is a strict mode function";
+}
+```
+
+## 10- What is event bubbling?
+
+JS allows DOM elements to be nested inside each other. In such a case, if the handler of the child is clicked, the handler of the parent will also work as if it were clicked too.
+
+## 11- Write the point of difference between a Web garden and a Web farm?
+
+Both web-garden and web-farm are web hosting systems. 
+
+- **Web-garden** is a setup that includes many processors in a single server.
+- **Web-farm** is a larger setup that uses more than one server.
+
+## 12- What are Screen objects?
+
+Screen objects are used to read the information from the client’s screen. The properties of screen objects are:
+
+- AvailHeight: Gives the height of the client’s screen
+- AvailWidth: Gives the width of the client’s screen
+- ColorDepth: Gives the bit depth of images on the client’s screen
+- Height: Gives the total height of the client’s screen, including the taskbar
+- Width: Gives the total width of the client’s screen, including the taskbar
+
+<Image src="/images/screenObject.png" width={507} height={109} className="borderRadius"/>
+
+## 13- What are unescape() and escape() functions?
+
+The escape () function is responsible for coding a string to transfer the information from one computer to the other across a network:
+```js
+<script>
+document.write(escape("Hello? How are you!"));
+</script>
+```
+Output: Hello%3F%20How%20are%20you%21
+
+The unescape() function is very important as it decodes the coded string:
+```js
+<script>
+    document.write(unescape("Hello%3F%20How%20are%20you%21"));
+</script>
+```
+Output: Hello? How are you!
+
+## 14- What are the decodeURI() and encodeURI()?
+
+EncodeURl() is used to convert URL into their hex coding. And DecodeURI() is used to convert the encoded URL back to normal.
+```js
+<script>
+   var uri="my test.asp?name=ståle&car=saab";
+
+   document.write(encodeURI(uri)+ "<br>"); // Output: my%20test.asp?name=st%C3%A5le&car=saab
+
+    document.write(decodeURI(uri)); // Output: my test.asp?name=ståle&car=saab
+</script>
+```
+## 15- What are the important JavaScript Array Method explain with example?
+
+The Array object has many properties and methods which help developers to handle arrays easily and efficiently. You can get the value of a property by specifying arrayname.property and the output of a method by specifying arrayname.method().
+
+- **length property** –> If you want to know the number of elements in an array, you can use the length property.
+- **prototype property** –> If you want to add new properties and methods, you can use the prototype property.
+- **reverse method** –> You can reverse the order of items in an array using a reverse method.
+- **sort method** –> You can sort the items in an array using sort method.
+- **pop method** –> You can remove the last item of an array using a pop method.
+- **shift method** –> You can remove the first item of an array using shift method.
+- **push method** –> You can add a value as the last item of the array.
+
+```html
+<html>
+<head>
+    <title>Arrays!!!</title>
+    <script type="text/javascript">
+        var students = new Array("John", "Ann", "Aaron", "Edwin", "Elizabeth");
+        Array.prototype.displayItems=function(){
+            for (i=0;i<this.length;i++){
+                document.write(this[i] + "<br />");
+            }
+        }    
+        document.write("students array<br />");
+        students.displayItems();
+        document.write("<br />The number of items in students array is " + students.length + "<br />");
+        document.write("<br />The SORTED students array<br />");
+        students.sort();
+        students.displayItems();
+        document.write("<br />The REVERSED students array<br />");
+        students.reverse();
+        students.displayItems();
+        document.write("<br />THE students array after REMOVING the LAST item<br />");
+        students.pop();
+        students.displayItems();
+		document.write("<br />THE students array after PUSH<br />");
+        students.push("New Stuff");
+        students.displayItems();
+    </script>
+</head>
+<body>
+</body>
+</html>
+```
