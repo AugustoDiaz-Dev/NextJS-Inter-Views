@@ -1,0 +1,128 @@
+---
+title: TypeScript Intermediate
+tags:
+  - typescript
+date: 2022-07-27
+excerpt: TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JS and adds optional static typing to the language. It is designed for the development of large applications and transpiles to JS.
+---
+
+01. ## When should you use the "unknown" type?
+
+**unknown** is a special type that is similar to any. Like any, a common use case of the unknown type is when you don't know the exact type upfront. unknown variables accept any value. However, when trying to operate on an unknown variable, TS requires a type check or a type assertion. 
+
+Let's look at two examples to highlight the differences between any and unknown types.
+
+The snippet below shows a valid TS code where you could pass in any value as the callback parameter, and the invokeCallback method will try to call it. This function doesn't throw any compile-time error, however, it could lead to a run time error when you pass in a variable that's not callable as the callback parameter.
+
+```
+invokeCallback(callback: any): void {
+  callback();
+}
+```
+
+The unknown equivalent of the above example requires you to add a type check before calling the callback function. The additional type check prevents the run time error above from happening.
+
+```
+invokeCallback(callback: unknown): void {
+  if (typeof callback === 'function') {
+    callback();
+  }
+}
+```
+
+To summarize, <span className="yellowHighlight">you can assign anything to both an any and an unknown type. However, unknown types require a type check or type assertion to perform any operation on the variable.</span>
+
+02. ## What is noImplicitAny and what is its purpose?
+
+**noImplicitAny** is a property in a TS project's configuration file (tsconfig.json) that modifies how TS's compiler handles your project's implicit any types. The noImplicitAny flag can be set to either true or false and can always be changed later. There is no correct answer as to what this value should be as each project is different. To be able to decide on what the flag should be set to, it is important to understand the differences between when it's turned on and when it's off.
+
+When the **noImplicitAny flag is false** (by default), the compiler doesn't infer the variable type based on how it's used. Instead, the compiler defaults the type to any.
+
+On the other hand, when the **noImplicitAny flag is true**, the compiler will attempt to infer the type, throwing a compile-time error if the compiler isn't able to infer the type.
+
+Setting the noImplicitAny flag to either true or false doesn't prevent you from setting a variable's type to any.
+
+03. ## What are conditional types in TypeScript?
+
+Conditional types in TS are similar to ternary operators. As the name suggests, it assigns a type to the variable based on a condition.
+
+The general expression for defining a conditional type in TypeScript is as follows:
+
+```
+A extends B ? X : Y
+```
+
+Type X in the snippet above is applied if the variable fulfills the condition whereas type Y is applied if the variable doesn't. In the example above, type X is assigned if A extends B, while type Y is assigned if A doesn't extend B.
+
+04. ## What is the difference between union and intersection types?
+
+Unions and intersection types let you compose and combine existing types instead of creating them from scratch. Both union and intersection come with their unique characteristics which make them ideal for different use cases.
+
+A union type is described as a type that can be one of several types. Union type uses the | (vertical bar) symbol to separate the list of types that will be used in the new type. Let's take a look at an example:
+
+```
+interface B {
+  name: string,
+  email: string
+}
+
+interface C {
+  name: string,
+  age: number
+}
+
+type A = B | C;
+```
+
+A in the snippet above can either be of type B or C. Based on B and Cs interfaces, A can either contain name and email (B) or name and age (C), but not email and age.
+
+When accessing type A, TS only lets you access properties that exist in both B and C (name) as those are the only ones that TS can be certain of their existence.
+
+Intersection on the other hand, is described as a type that combines multiple types into one - combining all the properties of each type to create a new type. Intersection uses the & symbol to separate the list of types that will be combined. Let's look at an example:
+
+```
+interface B {
+  name: string,
+  email: string
+}
+
+interface C {
+  name: string,
+  age: number
+}
+
+type A = B & C;
+```
+
+A in the snippet above will contain all the properties from both B and C (name, email, and age).
+
+05. ## What is the difference between extends and implements in TypeScript?
+
+Implements and extends have different uses.
+
+When a class **extends** another class, the child class will inherit all the properties and methods of the class it extends. You can override any of the existing properties and methods of its parent and add new ones.
+
+When a class **implements** another class or interface, the class has to implement all the methods and properties from the implemented class or interface. The implements keyword acts as a contract that the class has to follow, and TS will make sure that the class is of the same shape as the class or interface it implements.
+
+Let's look at an example of a class and how another class can extend and implement it: 
+
+```
+class User {
+  name: string;
+  age: number;
+}
+
+// John will contain name and age from the User class
+class John extends User {}
+
+// this will result in an error as Bob doesn't have all the properties that
+// the User class has
+class Bob implements User {}
+
+// This is valid as Mike satisfies the "contract" specified by the 
+// User class
+class Mike implements User {
+  name = 'Mike';
+  age = 25
+}
+```
