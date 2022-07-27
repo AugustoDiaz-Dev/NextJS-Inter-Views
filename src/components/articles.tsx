@@ -13,6 +13,7 @@ export default function Articles({ posts }: { posts: PostMeta[] }) {
             </h2>
           </div>
           <p>{post.excerpt}</p>
+          <p>{post.date}</p>
           <p className={styles.tags}>
             {post.tags.map((tag) => (
               <Link key={tag} href={`/tags/${tag}`}>
