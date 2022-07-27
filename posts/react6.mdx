@@ -1,0 +1,66 @@
+---
+title: React Native
+tags:
+  - JS
+  - Front-End
+  - React
+date: 2022-07-06
+categories: "general" 
+excerpt: React 
+---
+
+## Contents
+<div className="innerContainer">
+| No. | Questions |  
+| --- | --------- |  
+|001| [What is the difference between React Native and React?](#what-is-the-difference-between-react-native-and-react) |
+|002| [How to test React Native apps?](#how-to-test-react-native-apps) |
+|003| [How to do logging in React Native?](#how-to-do-logging-in-react-native) |
+|004| [How to debug your React Native?](#how-to-debug-your-react-native) |
+</div>
+<br/>
+<hr/>
+
+## *React Native*
+    
+001. ## What is the difference between React Native and React?
+
+     **React** is a JavaScript library, supporting both front end web and being run on the server, for building user interfaces and web applications.
+
+     **React Native** is a mobile framework that compiles to native app components, allowing you to build native mobile applications (iOS, Android, and Windows) in JavaScript that allows you to use React to build your components, and implements React under the hood.
+
+
+   **[<span style={{color: "var(--myLightBlue)"}}>⬆ Back to Top</span>](#contents)**
+    
+002. ## How to test React Native apps?
+
+     React Native can be tested only in mobile simulators like iOS and Android. You can run the app in your mobile using expo app (https://expo.io) Where it syncs using QR code, your mobile and computer should be in same wireless network.
+
+
+   **[<span style={{color: "var(--myLightBlue)"}}>⬆ Back to Top</span>](#contents)**
+    
+003. ## How to do logging in React Native?
+
+     You can use `console.log`, `console.warn`, etc. As of React Native v0.29 you can simply run the following to see logs in the console:
+
+     ```
+     $ react-native log-ios
+     $ react-native log-android
+     ```
+
+
+   **[<span style={{color: "var(--myLightBlue)"}}>⬆ Back to Top</span>](#contents)**
+    
+004. ## How to debug your React Native?
+
+     Follow the below steps to debug React Native app:
+
+     1. Run your application in the iOS simulator.
+     2. Press `Command + D` and a webpage should open up at `http://localhost:8081/debugger-ui`.
+     3. Enable *Pause On Caught Exceptions* for a better debugging experience.
+     4. Press `Command + Option + I` to open the Chrome Developer tools, or open it via `View` -> `Developer` -> `Developer Tools`.
+     5. You should now be able to debug as you normally would.
+
+
+   **[<span style={{color: "var(--myLightBlue)"}}>⬆ Back to Top</span>](#contents)**
+    

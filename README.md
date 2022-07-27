@@ -13,3 +13,6 @@ VERCEL deployment:
     "react/no-unescaped-entities": "off"
   }
 }
+
+
+https://github.com/remarkjs/remark-gfm // To visualize tables in mdx you need this plugin, import it and declare it.

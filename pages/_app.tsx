@@ -12,12 +12,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <nav >
         <Link href="/">
-          <>
-            <p style={{ display: "flex", justifyContent: "end", alignItems: "center" }} className="navBtn">
-              Home&nbsp;
-              <AiFillHome size={32} color="var(--myBlue)" />
-            </p>
-          </>
+          <a className="navBtn">
+            <AiFillHome size={32} color="var(--myBlue)" />
+            &nbsp;Home
+          </a>
         </Link>
       </nav>
       <Component {...pageProps} />

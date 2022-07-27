@@ -10,6 +10,8 @@ import { getPostFromSlug, getSlugs, PostMeta } from "@/src/api";
 import YouTube from "@/src/components/youTube";
 import "highlight.js/styles/atom-one-dark.css";
 
+import remarkGfm from 'remark-gfm'
+
 interface MDXPost {
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
   meta: PostMeta;
@@ -36,6 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: "wrap" }],
         rehypeHighlight,
+        remarkGfm,
       ],
     },
   });
