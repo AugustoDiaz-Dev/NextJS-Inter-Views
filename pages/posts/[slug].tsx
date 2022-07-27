@@ -9,7 +9,6 @@ import rehypeHighlight from "rehype-highlight";
 import { getPostFromSlug, getSlugs, PostMeta } from "@/src/api";
 import YouTube from "@/src/components/youTube";
 import "highlight.js/styles/atom-one-dark.css";
-
 import remarkGfm from 'remark-gfm'
 
 interface MDXPost {

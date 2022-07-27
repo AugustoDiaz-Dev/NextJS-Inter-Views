@@ -1,0 +1,135 @@
+---
+title: TypeScript Advanced
+tags:
+  - typescript
+date: 2022-07-27
+excerpt: TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JS and adds optional static typing to the language. It is designed for the development of large applications and transpiles to JS.
+---
+
+01. ## Explain how optional chaining works in TypeScript.
+
+**Optional chaining** allows you to access properties and methods located deep within an object without having to check the validity of each reference in the chain.
+
+Optional chaining uses the question mark followed by a period (?.) as its operator. TS evaluates each reference in the chain and performs a null or undefined check before accessing its children. TS immediately stops the execution when it fails the null or undefined check and returns undefined for the entire chain.
+
+The code snippet below is an example of accessing a property with and without using optional chaining.
+
+```
+const user = {
+  personalInfo: {
+    name: 'John'
+  }
+}
+
+// without optional chaining
+const name = user && user.personalInfo && user.personalInfo.name || undefined;
+
+// with optional chaining
+const name = user?.personalInfo?.name;
+```
+
+02. ## What are abstract classes?
+
+Abstract classes specify a contract for the objects without the ability to instantiate them directly. However, an abstract class may also provide implementation details for its members.
+
+An abstract class contains one or more abstract members. Any classes that extend the abstract class will then have to provide an implementation for the superclass's abstract members.
+
+Let's look at an example of how an abstract class is written in TS and how another class can extend it. In the example below, both Car and Bike extend the Vehicle class, however, they each have a different implementation of the drive() method.
+
+```
+abstract class Vehicle {
+
+  abstract drive(): void;
+  
+  startEngine(): void {
+    console.log('Engine starting...');
+  }
+}
+
+class Car extends Vehicle {
+  drive(): void {
+    console.log('Driving in a car');
+  }
+}
+
+class Bike extends Vehicle {
+  drive(): void {
+    console.log('Driving on a bike');
+  }
+}
+```
+
+03. ## What are type assertions in TypeScript?
+
+Type assertion allows you to explicitly set the type of a value and tell the compiler not to infer it. This is useful when you know the type of an object more specifically than its current type or current inferred type. In such cases, you can use type assertions to tell TS the current type of the variable.
+
+TypeScript provides two syntaxes for type assertions - as and <>.
+
+```
+// using the `as` keyword
+const name: string = person.name as string;
+
+// using `<>`
+const name: string = <string>person.name;
+```
+
+Since type assertions are only a way to tell the TS compiler about the type of a variable, there is no runtime penalty of doing this in your TS projects.
+
+04. ## What is the difference between type inference and contextual typing?
+
+TS can infer the type of a variable usually based on the variable's initialization or declaration. This process is known as **type inference**.
+
+The snippet below is an example of type inference where TS infers the type of name as “string” based on the value assigned to it.
+
+```
+let name = 'john'
+```
+
+**Contextual typing** is a subset of type inference where TS uses the location or context of a variable to infer its type. You can think about this as type inference in the opposite direction.
+
+In the snippet below, TS uses information from the onmousedown function to infer the type of the mouseEvent parameter.
+
+```
+window.onmousedown = function(mouseEvent) {
+   console.log(mouseEvent.button);   // OK
+   console.log(mouseEvent.person);   // Error
+};
+```
+
+05. ## How does function overloads work in TypeScript?
+
+Function overload is when the same function name is used multiple times with a different set of arguments - the number of arguments, types, or return types.
+
+Let's look at an example of how a print function can accept multiple types as its parameter by using function overloading:
+
+```
+print(message: string): void;
+print(message: string[]): void;
+
+print(message: unknown): void {
+  if (typeof message === 'string') {
+    console.log(message);
+  } else if (Array.isArray(message)) {
+    message.forEach((individualMessage) => {
+      console.log(individualMessage);
+    });
+  } else {
+    throw new Error('unable to print');
+  }
+}
+```
+
+Based on the code snippet above, we can now call print passing in either a single message string or an array of message strings.
+
+```
+print('Single message');
+// Console Output:
+// Single message
+
+print(['First message', 'Second message']);
+// Console Output
+// First message
+// Second message
+```
+
+Apart from the reusability of the function, function overloading also comes with autocomplete support. When calling a function (depending on your IDE), you will be provided with a list of all possible overloads that you can choose from for your specific use case, creating a better development experience.

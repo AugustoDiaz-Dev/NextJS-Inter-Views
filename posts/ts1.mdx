@@ -1,0 +1,233 @@
+---
+title: TypeScript Basic
+tags:
+  - typescript
+date: 2022-07-27
+excerpt: TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JS and adds optional static typing to the language. It is designed for the development of large applications and transpiles to JS.
+---
+
+01. ## What is TypeScript and how does it differ from JS? 
+
+[<span className="link">TypeScript</span>](https://en.wikipedia.org/wiki/TypeScript) is <span className="yellowHighlight">a superset of JS that compiles to plain JS.</span> Conceptually, the relationship between TS and JS is comparable to that of SASS and CSS. In other words, TS is JS's ES6 version with some additional features.
+
+<span className="yellowHighlight">TS is an object-oriented and statically typed language,</span> similar to Java and C#, whereas JS is a scripting language closer to Python. The object-oriented nature of TS is complete with features such as classes and interfaces, and its static typing allows for better tooling with type inference at your disposal.
+
+From a code perspective, TS is written in a file with a .ts extension whereas JS is written with a .js extension. Unlike JS, TS code is not understandable by the browsers and can't be executed directly in the browser or any other platform. The .ts files need to be transpiled using TS's tsc transpiler to plain JS first, which then gets executed by the target platform.
+
+2. ## What are the benefits of using TypeScript?
+
+An immediate advantage of using TS is its tooling. TS is a strongly typed language that uses type inferences. These characteristics open the doors to better tooling and tighter integration with code editors. TS's strict checks catch your errors early, greatly reducing the chances of typos and other human errors from making their way to production. From an IDE's perspective, TS provides the opportunity for your IDE to understand your code better allowing it to display better hints, warnings, and errors to the developer. For example, TS's strict null check throws an error at compile time (and in your IDE) preventing a common JS error of attempting to access a property of an undefined variable at runtime.
+
+- A long-run advantage of using TS is its scalability and maintainability. 
+- The ability to describe the shape of objects and functions directly in your code makes your codebase easier to understand and more predictable.  
+- When used correctly, TS provides a more standardized language resulting in better readability which could save time and effort down the road as the codebase grows.
+
+3. ## What are interfaces in TypeScript?
+
+Interfaces are TS's way of defining the syntax of entities. In other words, interfaces are a way to describe data shapes such as objects or an array of objects.
+
+We declare interfaces with the help of the interface keyword, followed by the interface name and its definition:
+
+```
+interface User {
+  name: string;
+  age: number;
+}
+```
+The interface can then be used to set the type of a variable (similar to how you assign primitive types to a variable). A variable with the User type will then conform to the interface's properties.
+
+```
+let user: User = {
+  name: "Bob",
+  age: 20, // Omitting the `age` property or assigning a different type instead of a number would throw an error.
+};
+```
+
+Interfaces help drive consistency in your TS project. Furthermore, interfaces also improve your project's tooling, providing better autocomplete functionality in your IDEs and ensuring the correct values are being passed into constructors and functions.
+
+4. ## How do you create a new type using a subset of an interface?
+
+TS has a utility type called omit that lets you construct a new type by passing a current type/interface and selecting the keys to be excluded from the new type. The example below shows how you create a new type UserPreview based on the User interface, but without the email property:
+
+```
+interface User {
+  name: string;
+  description: string;
+  age: number;
+  email: string;
+}
+
+// removes the `email` property from the User interface
+type UserPreview = Omit<User, "email">;
+
+const userPreview: UserPreview = {
+  name: "Bob",
+  description: "Awesome guy",
+  age: 20,
+};
+```
+
+5. ## How do “enums” work in TypeScript?
+
+Enums or enumerated types are a means of defining a set of named constants. These data structures have a constant length and contain a set of constant values. Enums in TS are commonly used to represent a set number of options for a given value using a set of key/value pairs.
+
+Let's look at an example of an enum to define a set of user types.
+
+```
+enum UserType {
+  Guest = "G",
+  Verified = "V",
+  Admin = "A",
+}
+
+const userType: UserType = UserType.Verified;
+```
+
+Under the hood, TS translates enums into plain JS objects after compilation. This makes the use of enums more favorable compared to using multiple independent const variables. The grouping that enums offer makes your code type-safe and more readable.
+
+6. ## What are arrow functions in TypeScript?
+
+Arrow functions, also known as lambda functions, provide a short and convenient syntax to declare functions. Arrow functions are often used to create callback functions in TS. Array operations such as map, filter, and reduce all accept arrow functions as their arguments.
+
+However, arrow functions' anonymity also has its downsides. If not careful, the shorter arrow function syntax can be more difficult to understand. Furthermore, arrow functions' nameless nature also makes it impossible to create self-referencing functions (i.e. recursions).
+
+Let's take a look at a regular function that accepts two numbers and returns its sum.
+
+```
+function addNumbers(x: number, y: number): number {
+  return x + y;
+}
+
+addNumbers(1, 2); // returns 3
+```
+
+Now letss convert the function above into an arrow function.
+
+```
+const addNumbers = (x: number, y: number): number => {
+  return x + y;
+};
+
+```
+
+7. ## What are the differences between var, let, and const?
+
+<span className="yellowHighlight">var:</span> Declares a function-scoped or global variable with similar behavior and scoping rules to JS's var variables. var variables don't require setting its value during its declaration.
+
+<span className="yellowHighlight">let:</span> Declares a block-scoped local variable. let variables don't require setting a value of a variable during its declaration. Block-scoped local variable means that the variable can only be accessed within its containing block, such as a function, an if/else block, or a loop. Furthermore, unlike var, let variables cannot be read or written to before they are declared.
+
+```
+// reading/writing before a `let` variable is declared
+console.log("age", age); // Compiler Error: error TS2448: Block-scoped variable 'age' used before its declaration
+age = 20; // Compiler Error: error TS2448: Block-scoped variable 'age' used before its declaration
+
+let age: number;
+
+// accessing `let` variable outside it's scope
+function user(): void {
+  let name: string;
+  if (true) {
+    let email: string;
+    console.log(name); // OK
+    console.log(email); // OK
+  }
+  console.log(name); // OK
+  console.log(email); // Compiler Error: Cannot find name 'email'
+}
+```
+
+<span className="yellowHighlight">const:</span> Declares a block-scoped constant value that cannot be changed after it's initialized. const variables require an initialization as part of its declaration. This is ideal for variables that don't change throughout their lifetime.
+
+```
+// reassigning a `const` variable
+const age: number = 20;
+age = 30; // Compiler Error: Cannot assign to 'age' because it is a constant or read-only property
+
+// declaring a `const` variable without initialization
+const name: string; // Compiler Error: const declaration must be initialized
+```
+
+8. ## When do you use a return type of never and how does it differ from void?
+
+Before diving into the differences between never and void, let's talk about the behavior of a JS function when nothing is returned explicitly.
+
+Let's take the function in the example below. It doesn't explicitly return anything to the caller. However, if you assign it to a variable and log the value of the variable, you will see that the function's value is undefined.
+
+```
+printName(name: string): void {
+  console.log(name);
+}
+
+const printer = printName('Will');
+console.log(printer); // logs "undefined"
+```
+
+The above snippet is an example of void functions. Functions with no explicit returns are inferred by TS to have a return type of void.
+
+In contrast, never is a type that represents a value that never occurs. For example, a function with an infinite loop or a function that throws an error are functions that have a never return type.
+
+```
+const error = (): never => {
+  throw new Error("");
+};
+```
+
+In summary, void is used whenever a function doesn't return anything explicitly whereas never is used whenever a function never returns.
+
+9. ## What access modifiers are supported by TypeScript?
+
+The concept of “encapsulation” is used in object-oriented programming to control the visibility of its properties and methods. TS uses access modifiers to set the visibility of a class contents. Because TS gets compiled to JS, logic related to access modifiers is applied during compile time, not at run time.
+
+There are three types of access modifiers in TS: **public, private, and protected.**
+
+<span className="yellowHighlight">public:</span> All properties and methods are public by default. Public members of a class are visible and accessible from any location.
+
+<span className="yellowHighlight">protected:</span>  Protected properties are accessible from within the same class and its subclass. For example, a variable or method with the protected keyword will be accessible from anywhere within its class and within a different class that extends the class containing the variable or method.
+
+<span className="yellowHighlight">private:</span> Private properties are only accessible from within the class the property or method is defined.
+
+To use any of these access modifiers, add the public, protected, or public (if omitted, TS will default to public) in front of the property or method.
+
+```
+class User {
+  private username; // only accessible inside the `User` class
+
+  // only accessible inside the `User` class and its subclass
+  protected updateUser(): void {}
+
+  // accessible from any location
+  public getUser() {}
+}
+```
+
+Violating the rules of the access modifier, such as attempting to access a class's private property from a different class will result in the following error during the compilation process.
+
+```
+Property '<property-name>' is private and only accessible within class '<class-name>'.
+```
+
+In conclusion, access modifiers play an important role in arranging your code. They allow you to expose a set of public APIs and hide the implementation details. You can think of access modifiers as a form of entry gates to your class. Effective use of access modifiers reduces the chance of errors from misusing another class's contents significantly.
+
+10. ## What are generics and how to use them in TypeScript?
+
+Good software engineering practice often encourages reusability and flexibility. The use of generics provides reusability and flexibility by allowing a component to work over a variety of types rather than a single one while preserving its precision (unlike the use of any).
+
+Below is an example of a generic function that lets the caller define the type to be used within the function:
+
+```
+function updateUser<Type>(arg: Type): Type {
+  return arg;
+}
+```
+
+To call a generic function, you can either pass in the type explicitly within angle brackets or via type argument inference, letting TypeScript infer the type based on the type of the argument passed in.
+
+```
+// explicitly specifying the type
+let user = updateUser<string>("Bob");
+
+// type argument inference
+let user = updateUser("Bob");
+```
+
+Generics allows us to keep track of the type information throughout the function. This makes the code flexible and reusable without compromising on its type accuracy.
