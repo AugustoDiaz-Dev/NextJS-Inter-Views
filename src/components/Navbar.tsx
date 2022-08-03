@@ -7,33 +7,33 @@ import { SiTypescript } from 'react-icons/si'
 
 const Navbar = () => {
     return (
-        <nav style={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+        <nav>
             <Link href="/">
-                <a className="navBtn">
+                <a className="navBtn borderRadius">
                     <AiOutlineHome size={32} color="var(--myViolet)" />
                     {/* &nbsp;Home */}
                 </a>
             </Link>
             <Link href="/reactposts">
-                <a className="navBtn">
+                <a className="navBtn borderRadius">
                     <FaReact size={32} color="var(--myLightBlue)" />
                     {/* &nbsp;React */}
                 </a>
             </Link>
             <Link href="/jsposts">
-                <a className="navBtn">
+                <a className="navBtn borderRadius">
                     <TbBrandJavascript size={32} color="var(--myYellow)" />
                     {/* &nbsp;JS */}
                 </a>
             </Link>
             <Link href="/nodeposts">
-                <a className="navBtn">
+                <a className="navBtn borderRadius">
                     <FaNodeJs size={32} color="var(--myGreen)" />
                     {/* &nbsp;JS */}
                 </a>
             </Link>
             <Link href="/tsposts">
-                <a className="navBtn">
+                <a className="navBtn borderRadius">
                     <SiTypescript size={32} color="var(--myBlue)" />
                     {/* &nbsp;JS */}
                 </a>

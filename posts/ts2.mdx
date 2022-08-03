@@ -2,7 +2,7 @@
 title: TypeScript Intermediate
 tags:
   - typescript
-date: 2022-07-27
+date: "2022-07-26"
 excerpt: TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JS and adds optional static typing to the language. It is designed for the development of large applications and transpiles to JS.
 ---
 
@@ -14,7 +14,7 @@ Let's look at two examples to highlight the differences between any and unknown 
 
 The snippet below shows a valid TS code where you could pass in any value as the callback parameter, and the invokeCallback method will try to call it. This function doesn't throw any compile-time error, however, it could lead to a run time error when you pass in a variable that's not callable as the callback parameter.
 
-```
+```ts
 invokeCallback(callback: any): void {
   callback();
 }
@@ -22,7 +22,7 @@ invokeCallback(callback: any): void {
 
 The unknown equivalent of the above example requires you to add a type check before calling the callback function. The additional type check prevents the run time error above from happening.
 
-```
+```ts
 invokeCallback(callback: unknown): void {
   if (typeof callback === 'function') {
     callback();
@@ -48,7 +48,7 @@ Conditional types in TS are similar to ternary operators. As the name suggests, 
 
 The general expression for defining a conditional type in TypeScript is as follows:
 
-```
+```ts
 A extends B ? X : Y
 ```
 
@@ -60,7 +60,7 @@ Unions and intersection types let you compose and combine existing types instead
 
 A union type is described as a type that can be one of several types. Union type uses the | (vertical bar) symbol to separate the list of types that will be used in the new type. Let's take a look at an example:
 
-```
+```ts
 interface B {
   name: string,
   email: string
@@ -80,7 +80,7 @@ When accessing type A, TS only lets you access properties that exist in both B a
 
 Intersection on the other hand, is described as a type that combines multiple types into one - combining all the properties of each type to create a new type. Intersection uses the & symbol to separate the list of types that will be combined. Let's look at an example:
 
-```
+```ts
 interface B {
   name: string,
   email: string
@@ -106,7 +106,7 @@ When a class **implements** another class or interface, the class has to impleme
 
 Let's look at an example of a class and how another class can extend and implement it: 
 
-```
+```ts
 class User {
   name: string;
   age: number;

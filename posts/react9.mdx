@@ -1,0 +1,149 @@
+---
+title: React Interview
+tags:
+  - react
+date: 2000-08-01
+categories: "general" 
+excerpt: Questions for React Interview.
+---
+
+Originally developed for Facebook, React is a JavaScript library that builds user interfaces for single-page applications by dividing UI into composable components. Since it requires only a minimal understanding of HTML and JavaScript, React has risen in popularity as a front-end web development tool.
+
+## What do you like and dislike about React? 
+
+### **Like:** 
+- **Fast learning curve:** React only deals with the view layer. I personally tried Vue, Angular and React and I have chosen React because it is JavaScript. In VUE for example you have v-if v-for, something similar in Angular (ng-for) and also I like how you manage styles, views and logic in React more than angular or vue.
+- **Reusable components:** Components are your lego pieces. Each component decides how it should be rendered and each component has its own internal logic.  
+- **Fast render with Virtual DOM:** Virtual DOM is a copy of the DOM kept in memory. Any view changes are first reflected to virtual DOM, then an efficient diff algorithm compares the previous and current states and the virtual DOM and calculates the best way to apply these changes. 
+- **Clean abstraction:** it does not expose any complex internals to the user. 
+- **Redux:** Redux is a predictable state container designed to help you write JavaScript apps that behave consistently across client, server, and native environments and are easy to test. While it's mostly used as a state management tool with React, you can use it with any other JavaScript framework or library. 
+
+**What problem does Redux solve?**
+
+Redux provides a solution by ensuring that: Your state is wrapped in a store which handles all updates and notifies all code that subscribes to the store of updates to the state.
+- **Great developer tools:** React Developer Tools and Redux Developer Tools can be installed as Chrome extensions. 
+- **React Native:** Is like a bonus. You can write native apps for Android and IOS using React Native. Although you will not be able to use the exact same code you wrote for web, you will be able to use the same methodology and the same architecture. 
+
+### **Dislikes:** 
+
+- **Be up to date:** It requires to be always updated with their skills and learn new ways of doing things. 
+- **Documentation:** Because they create new features so fast sometimes the documentation is not fully prepared or well explained. React documentation is a good starter point but for sure you will have to consult many other resources to understand the whole thing. Even they are developing a beta version of React documentation. 
+
+<span className="link">[Why do you dislike React? Dev.to](https://dev.to/savagepixie/why-do-you-dis-like-react-145b)</span>
+
+## How to make conditional rendering? 
+
+<span className="link">[Conditional rendering. Beta-ReactJS](https://beta.reactjs.org/learn/conditional-rendering)</span>   
+<span className="link">[Conditional rendering. ReactJS](https://reactjs.org/docs/conditional-rendering.html)</span>   
+<span className="link">[Conditional Rendering 7 ways. Digital Ocean](https://www.digitalocean.com/community/tutorials/7-ways-to-implement-conditional-rendering-in-react-applications)</span>   
+<span className="link">[Conditional rendering 9 methods. Logrocket](https://blog.logrocket.com/react-conditional-rendering-9-methods/)</span>  
+
+## How to render a list? 
+<span className="link">[Rendering lists. Beta-ReactJS](https://beta.reactjs.org/learn/rendering-lists)</span> 
+
+
+## What is the significance of having a key prop when rendering a list of elements? 
+
+<span className="link">[Lists and keys. ReacJS](https://reactjs.org/docs/lists-and-keys.html)</span>  
+
+Keys help React identify which items have changed, are added, or are removed. The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. 
+
+When you don't have stable IDs for rendered items, you may use the item index as a key as a last resort but is not recommended if the order of items may change. This can negatively impact performance and may cause issues with component state. 
+
+<span className="link">[Index as a key is an anti-pattern. Medium](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318)</span>  
+
+## Class components lifecycle methods.
+
+<span className="link">[React Component. ReactJS](https://reactjs.org/docs/react-component.html)</span>           
+<span className="link">[React Lifecycle. Order of invocation. W3Schools](https://www.w3schools.com/react/react_lifecycle.asp)</span>           
+
+## When you use each lifecycle method?
+
+- **componentDidMount:** The method is called after the component is rendered.
+-**render:** The render() method is of course called when a component gets updated, it has to re-render the HTML to the DOM, with the new changes.
+
+(Add more information)
+
+## Context API. 
+
+**What is prop drilling?** 
+Prop drilling is the unofficial term for passing data through several nested children components, in a bid to deliver this data to a deeply-nested component. The problem with this approach is that most of the components through which this data is passed have no actual need for this data.
+
+## How can you overcome prop drilling using the context API?
+
+<span className="link">[Avoid prop drilling with React Context. Medium](https://medium.com/swlh/avoid-prop-drilling-with-react-context-a00392ee3d8)</span>  
+
+## What was the need for hooks? 
+When you use useState, useEffect(mount, update, unmount) and useContext? 
+
+Optimization: Pure components, useMemo(), useCallback(), memo. (re-renders). 
+
+## Pure components. 
+
+React.PureComponent is similar to React.Component. The difference between them is that React.Component doesn't implement shouldComponentUpdate(), but React.PureComponent implements it with a shallow prop and state comparison.
+
+If your React component's render() function renders the same result given the same props and state, you can use React.PureComponent for a performance boost in some cases.
+
+**Note**
+
+*React.PureComponent's shouldComponentUpdate() only shallowly compares the objects. If these contain complex data structures, it may produce false-negatives for deeper differences. Only extend PureComponent when you expect to have simple props and state, or use forceUpdate() when you know deep data structures have changed. Or, consider using immutable objects to facilitate fast comparisons of nested data.
+
+Furthermore, React.PureComponent's shouldComponentUpdate() skips prop updates for the whole component subtree. Make sure all the children components are also “pure”.*
+
+<span className="link">[React API. ReactJS](https://reactjs.org/docs/react-api.html?)</span>  
+
+## How do you share logic across components? 
+
+<span className="link">[How to smoothly manage shared logic with cusom react hooks? Medium](https://medium.com/jit-team/how-to-smoothly-manage-shared-logic-with-custom-react-hooks-558575c11bcf)</span>  
+
+## What are High order components(HOC)?
+
+A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React’s compositional nature.
+
+Concretely, a higher-order component is a function that takes a component and returns a new component.
+
+```
+const EnhancedComponent = higherOrderComponent(WrappedComponent);
+```
+
+Whereas a component transforms props into UI, a higher-order component transforms a component into another component.
+
+HOCs are common in third-party React libraries, such as Redux’s connect and Relay’s createFragmentContainer.
+
+<span className="link">[High Order Components. ReactJS](https://reactjs.org/docs/higher-order-components.html)</span>  
+
+## render props pattern.
+
+The term "render prop" refers to a technique for sharing code between React components using a prop whose value is a function.
+
+A component with a render prop takes a function that returns a React element and calls it instead of implementing its own render logic.
+
+```
+<DataProvider render={data => (
+  <h1>Hello {data.target}</h1>
+)}/>
+```
+Libraries that use render props include React Router, Downshift and Formik.
+
+<span className="link">[Render props. ReactJS](https://reactjs.org/docs/render-props.html)</span>  
+
+## What are custom hooks? 
+
+Building your own Hooks lets you extract component logic into reusable functions.
+
+<span className="link">[Building your own Hooks. ReactJS](https://reactjs.org/docs/hooks-custom.html)</span>  
+
+## How to style React? 
+
+<span className="link">[React Components Styling Options. Sitepoint](https://www.sitepoint.com/react-components-styling-options/)</span>
+
+## What are some of the packages that you use along with React? 
+
+- Styling: Tailwind. Bootstrap, Material-UI, Styled-Components. Emotion. Storybook.
+- routing: react-router-dom
+- form handling: formik
+- state management: Redux. Redux Toolkit.  
+- Others: Framer-Motion. React-Icons. Axios. 
+- Create-react-app
+- Custom Webpack Config. 
+ 

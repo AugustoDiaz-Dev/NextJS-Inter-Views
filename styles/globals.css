@@ -10,6 +10,7 @@
   --myWhite: #fff;
   --myBlack: #202124;
 }
+/* Special styles */
 .yellowHighlight {
   background-color: var(--myYellow);
   color: black;
@@ -36,9 +37,15 @@ body {
 * {
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
 a {
   color: inherit;
   text-decoration: none;
+}
+img {
+  width: 100%;
 }
 h1 {
   text-align: center;
@@ -60,33 +67,49 @@ p {
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: .25rem;
 }
 .borderRadius {
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
+}
+/* Navbar */
+nav {
+  display: flex; 
+  justify-content: 
+  flex-end; 
+  align-items: center; 
+  flex-wrap: wrap; 
 }
 .navBtn {
   cursor: pointer;
   display: flex;
   justify-content: flex-end; 
   align-items: center;
-  margin: 0 8px;
+  margin: 4px 8px;
   border: 2px solid var(--myWhite);
   padding: 4px 8px;
-  border-radius: 4px;
 }
 .navBtn:hover {
   border: 2px solid green;
 }
 .innerContainer { 
-  border: 4px solid var(--myGreen); 
-  border-radius: 50px;
   display: flex;
   justify-content: center; 
   align-items: center;
-  padding: 8px;
+  border: .2rem solid var(--myGreen); 
+  border-radius: 1rem;
+  padding: .25rem;
   box-shadow: 
   rgba(255, 255, 255, 0.25) 0px 13px 27px -5px, 
   rgba(255, 255, 255, 0.3) 0px 8px 16px -8px;
 }
-
+/* Footer */
+footer {
+  text-align: center;
+  margin: 2rem auto;
+}
+/* Posts */
+.postTitle {
+  color: var(--myViolet);
+  text-align: center;
+}

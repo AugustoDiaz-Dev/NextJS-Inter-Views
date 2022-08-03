@@ -2,7 +2,7 @@
 title: TypeScript Advanced
 tags:
   - typescript
-date: 2022-07-27
+date: "2022-07-25"
 excerpt: TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JS and adds optional static typing to the language. It is designed for the development of large applications and transpiles to JS.
 ---
 
@@ -14,7 +14,7 @@ Optional chaining uses the question mark followed by a period (?.) as its operat
 
 The code snippet below is an example of accessing a property with and without using optional chaining.
 
-```
+```ts
 const user = {
   personalInfo: {
     name: 'John'
@@ -34,9 +34,10 @@ Abstract classes specify a contract for the objects without the ability to insta
 
 An abstract class contains one or more abstract members. Any classes that extend the abstract class will then have to provide an implementation for the superclass's abstract members.
 
-Let's look at an example of how an abstract class is written in TS and how another class can extend it. In the example below, both Car and Bike extend the Vehicle class, however, they each have a different implementation of the drive() method.
+Let's look at an example of how an abstract class is written in TS and how another class can extend it. In the example below, both Car and Bike extend the Vehicle class, however, they each have a different implementation of the "drive" method.
 
-```
+```ts
+<>
 abstract class Vehicle {
 
   abstract drive(): void;
@@ -57,15 +58,16 @@ class Bike extends Vehicle {
     console.log('Driving on a bike');
   }
 }
-```
+</>
+``` 
 
 03. ## What are type assertions in TypeScript?
 
 Type assertion allows you to explicitly set the type of a value and tell the compiler not to infer it. This is useful when you know the type of an object more specifically than its current type or current inferred type. In such cases, you can use type assertions to tell TS the current type of the variable.
 
-TypeScript provides two syntaxes for type assertions - as and <>.
+TypeScript provides two syntaxes for type assertions: the `<>` operator and the `as` keyword.
 
-```
+```ts
 // using the `as` keyword
 const name: string = person.name as string;
 
@@ -81,15 +83,15 @@ TS can infer the type of a variable usually based on the variable's initializati
 
 The snippet below is an example of type inference where TS infers the type of name as “string” based on the value assigned to it.
 
-```
-let name = 'john'
+```ts
+let name = 'john';
 ```
 
 **Contextual typing** is a subset of type inference where TS uses the location or context of a variable to infer its type. You can think about this as type inference in the opposite direction.
 
 In the snippet below, TS uses information from the onmousedown function to infer the type of the mouseEvent parameter.
 
-```
+```ts
 window.onmousedown = function(mouseEvent) {
    console.log(mouseEvent.button);   // OK
    console.log(mouseEvent.person);   // Error
@@ -102,7 +104,7 @@ Function overload is when the same function name is used multiple times with a d
 
 Let's look at an example of how a print function can accept multiple types as its parameter by using function overloading:
 
-```
+```ts
 print(message: string): void;
 print(message: string[]): void;
 
@@ -121,7 +123,7 @@ print(message: unknown): void {
 
 Based on the code snippet above, we can now call print passing in either a single message string or an array of message strings.
 
-```
+```ts
 print('Single message');
 // Console Output:
 // Single message
