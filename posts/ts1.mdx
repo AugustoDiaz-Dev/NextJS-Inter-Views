@@ -2,7 +2,7 @@
 title: TypeScript Basic
 tags:
   - typescript
-date: 2022-07-27
+date: "2022-07-27"
 excerpt: TypeScript is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JS and adds optional static typing to the language. It is designed for the development of large applications and transpiles to JS.
 ---
 
@@ -28,7 +28,7 @@ Interfaces are TS's way of defining the syntax of entities. In other words, inte
 
 We declare interfaces with the help of the interface keyword, followed by the interface name and its definition:
 
-```
+```ts
 interface User {
   name: string;
   age: number;
@@ -36,7 +36,7 @@ interface User {
 ```
 The interface can then be used to set the type of a variable (similar to how you assign primitive types to a variable). A variable with the User type will then conform to the interface's properties.
 
-```
+```ts
 let user: User = {
   name: "Bob",
   age: 20, // Omitting the `age` property or assigning a different type instead of a number would throw an error.
@@ -49,7 +49,7 @@ Interfaces help drive consistency in your TS project. Furthermore, interfaces al
 
 TS has a utility type called omit that lets you construct a new type by passing a current type/interface and selecting the keys to be excluded from the new type. The example below shows how you create a new type UserPreview based on the User interface, but without the email property:
 
-```
+```ts
 interface User {
   name: string;
   description: string;
@@ -73,7 +73,7 @@ Enums or enumerated types are a means of defining a set of named constants. Thes
 
 Let's look at an example of an enum to define a set of user types.
 
-```
+```ts
 enum UserType {
   Guest = "G",
   Verified = "V",
@@ -93,7 +93,7 @@ However, arrow functions' anonymity also has its downsides. If not careful, the 
 
 Let's take a look at a regular function that accepts two numbers and returns its sum.
 
-```
+```ts
 function addNumbers(x: number, y: number): number {
   return x + y;
 }
@@ -103,7 +103,7 @@ addNumbers(1, 2); // returns 3
 
 Now letss convert the function above into an arrow function.
 
-```
+```ts
 const addNumbers = (x: number, y: number): number => {
   return x + y;
 };
@@ -116,7 +116,7 @@ const addNumbers = (x: number, y: number): number => {
 
 <span className="yellowHighlight">let:</span> Declares a block-scoped local variable. let variables don't require setting a value of a variable during its declaration. Block-scoped local variable means that the variable can only be accessed within its containing block, such as a function, an if/else block, or a loop. Furthermore, unlike var, let variables cannot be read or written to before they are declared.
 
-```
+```ts
 // reading/writing before a `let` variable is declared
 console.log("age", age); // Compiler Error: error TS2448: Block-scoped variable 'age' used before its declaration
 age = 20; // Compiler Error: error TS2448: Block-scoped variable 'age' used before its declaration
@@ -138,7 +138,7 @@ function user(): void {
 
 <span className="yellowHighlight">const:</span> Declares a block-scoped constant value that cannot be changed after it's initialized. const variables require an initialization as part of its declaration. This is ideal for variables that don't change throughout their lifetime.
 
-```
+```ts
 // reassigning a `const` variable
 const age: number = 20;
 age = 30; // Compiler Error: Cannot assign to 'age' because it is a constant or read-only property
@@ -153,7 +153,7 @@ Before diving into the differences between never and void, let's talk about the 
 
 Let's take the function in the example below. It doesn't explicitly return anything to the caller. However, if you assign it to a variable and log the value of the variable, you will see that the function's value is undefined.
 
-```
+```ts
 printName(name: string): void {
   console.log(name);
 }
@@ -166,7 +166,7 @@ The above snippet is an example of void functions. Functions with no explicit re
 
 In contrast, never is a type that represents a value that never occurs. For example, a function with an infinite loop or a function that throws an error are functions that have a never return type.
 
-```
+```ts
 const error = (): never => {
   throw new Error("");
 };
@@ -188,7 +188,7 @@ There are three types of access modifiers in TS: **public, private, and protecte
 
 To use any of these access modifiers, add the public, protected, or public (if omitted, TS will default to public) in front of the property or method.
 
-```
+```ts
 class User {
   private username; // only accessible inside the `User` class
 
@@ -202,7 +202,7 @@ class User {
 
 Violating the rules of the access modifier, such as attempting to access a class's private property from a different class will result in the following error during the compilation process.
 
-```
+```ts
 Property '<property-name>' is private and only accessible within class '<class-name>'.
 ```
 
@@ -214,7 +214,7 @@ Good software engineering practice often encourages reusability and flexibility.
 
 Below is an example of a generic function that lets the caller define the type to be used within the function:
 
-```
+```ts
 function updateUser<Type>(arg: Type): Type {
   return arg;
 }
@@ -222,7 +222,7 @@ function updateUser<Type>(arg: Type): Type {
 
 To call a generic function, you can either pass in the type explicitly within angle brackets or via type argument inference, letting TypeScript infer the type based on the type of the argument passed in.
 
-```
+```ts
 // explicitly specifying the type
 let user = updateUser<string>("Bob");
 
