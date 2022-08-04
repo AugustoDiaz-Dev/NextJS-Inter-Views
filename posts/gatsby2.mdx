@@ -1,0 +1,210 @@
+---
+title: Gatsby
+tags:
+  - gatsby
+date: "2022-08-04"
+excerpt: Gatsby is an open-source static site generator built on top of Node.js using React and GraphQL. It provides over 2500 plugins to create static sites based on sources as Markdown documents, MDX, images, and numerous Content Management Systems such as WordPress, Drupal and more.
+---
+
+## What is Gatsby? 
+
+It's a Static Site Generator (SSG) that uses a combination of React and GraphQL. Static sites generators generate static HTML pages using a combo of templates, components and data, at the BUILD time.
+
+## What are Gatsby Starters? 
+
+Gatsby starters are a collection of starter projects that can be used to get your Gatsby site up and running in a short time. 
+
+[Gatsby Starters](https://www.gatsbyjs.com/starters/) 
+
+Before starting a Gatsby Project make sure you install: 
+
+```bash
+npm install -g gatsby-cli
+```
+## How routes work in Gatsby? 
+
+In the pages folder any file you create will be a route. index is the default route. 
+
+If you want to create a sub-route you can create a folder and put your files in there. Again, index.js is going to be the default route.
+
+You also can create a Custom 404 page to catch all the routes are not found.
+
+We use "Link" tags to manage the routes: 
+
+```jsx
+<Link to="/">Home</Link>
+```
+
+## What is Content Mesh? 
+
+Content MESHING is a process of merging data from multiple sources into a single data source. It can be API endpoint, a database, headless CMS (Contentful) or even the file system. 
+
+<br/>
+<Image src="/images/gatsby/gat6.png" width={1170} height={574} className="borderRadius"/>
+<br/>
+
+## What is GraphQL? 
+
+<br/>
+<Image src="/images/gatsby/gat5.png" width={1170} height={581} className="borderRadius"/>
+<br/>
+
+GraphQL is a query language for APIs. It is a way to define queries and mutations. It's an alternative to using a REST API. It's integrated with Gatsby and you can access to it in localhost:8000/___graphql.
+
+To add metadata to your site you can include it in the gatsby-config.js file.
+
+```js
+module.exports = {
+  plugins: [],
+ siteMetadata: {
+      title: 'My Website',
+      description: 'A new website', 
+      copyright: 'Copyright © Augusto Diaz, 2022', 
+    }
+}
+```
+**Note:** Every time you change the gatsby-config file you have to restart the server running gatsby develop again. When you do it Gatsby reads the file and include that information in the GraphQL schema. 
+
+```js
+query MyQuery {
+  site {
+    siteMetadata {
+      title
+      description
+      copyright
+    }
+  }
+}
+```
+**Note:** The query name is not neccesary but it might be helpful to work with query variables. 
+
+<br/>
+<Image src="/images/gatsby/gat7.png" width={1170} height={480} className="borderRadius"/>
+<br/>
+
+### Querying data from pages.
+
+```jsx
+import React from "react"
+import { graphql, Link } from 'gatsby' // Import graphql
+import Layout from "../components/Layout"
+import styles from '../styles/home.module.css'
+// Recieve the data from the graphql query
+export default function Home({ data }) {
+// console.log the query data
+  console.log(data)
+// Destructure the data that is coming from the query object.
+  const { title, description } = data.site.siteMetadata;
+
+  return (
+    <Layout>
+      <section className={styles.header}>
+        <div>
+          <h2>{ title }</h2>
+          <h3>{ description }</h3>
+          <Link className={styles.btn} to="/projects">My Portfolio Projects</Link>
+        </div>
+        <img src="/banner.png" alt="site banner" style={{ maxWidth: '100%' }} />
+        {/* Use the data from graphql query */}
+      </section>
+    </Layout>
+  )
+}
+// GraphQL querying the site metadata that is in the gatsby-config.js file.
+export const query = graphql`
+  query SiteInfo {
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
+  }
+`
+```
+
+### useStaticQuery with GraphQL.
+
+The way you use to make queries from pages is not the same that you use for queries in other files. In page components we can use query variables but in static queries you can't use variables. 
+
+**Note:** You should use components with names in capital letter if not your useStaticQuery might not work. Also you can use the hook only once in each component.
+
+```jsx
+import React from 'react'
+import { graphql, Link, useStaticQuery } from 'gatsby' // useStaticQuery Hook
+
+export default function Navbar() {
+  // useStaticQuery 
+  const data = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+  const { title } = data.site.siteMetadata;
+
+  return (
+    <nav>
+      <h1>{ title }</h1>
+      <div className="links">
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
+      </div>
+    </nav>
+  )
+}
+```
+
+## Gatsby Plugins & Sources.
+
+
+
+
+## Take aways. 
+
+- **Deleting components:** Gatsby can throw you some errors if you delete some page. Usually is recommended to stop and restart the server with the command: gatsby develop. 
+
+- **Cache:** sometimes there are some problems with the cache. Try deleting the cache folder and restart the server.
+
+- **Naming Files:** Some people recommend to use capital letter in the components folder but for the routes just small ones.
+
+- **Layout Component:** It is useful to create a layout component to manage the header (nav) and the footer that is repeated accros different pages.
+
+```jsx
+export default function Layout({children}) {
+  return (
+    <div className="layout">
+      <Navbar />
+      <div className="content">
+        {/* Content for each page. 
+        Don't forget to pass the children to get your pages content rendered! */}
+        {children} 
+      </div>
+      <Footer />
+    </div>
+  );
+}
+```
+
+- **Styles:** It is recommended to use the styled-components library to manage the styles. You also can use global.css styles for global styles and home.module.css to scope styles to a specific component.
+
+```jsx
+import styles from '../styles/home.module.css';
+
+  const Home = () => (
+    // This is the way to use module styles inside of JSX
+    <div className={styles.homeTitle}>
+      <h1>Hello World</h1>
+    </div>
+  );
+```
+**Note:** It's always good idea to use class or id inside of css modules. If you don't do it and you apply styles to an element it will work but is not going to scope it and then all the elements with the same name are going to receive that particular property.
+
+- **Static Assets:** Usually we place in that folder images, favicon, js, css and so on. It is recommended to use the gatsby-image library to manage the images. Static assets are public to the browser and copied to the "public" folder. However using the images in the static folder means that they are not processed, optimized or minified for the web.
+
+<br/>
+<br/>

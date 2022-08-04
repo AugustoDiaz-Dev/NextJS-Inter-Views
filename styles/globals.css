@@ -67,7 +67,7 @@ p {
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: .25rem;
+  padding: .75rem;
 }
 .borderRadius {
   border-radius: 0.25rem;
@@ -105,8 +105,23 @@ nav {
 }
 /* Footer */
 footer {
+  padding: .5rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   text-align: center;
-  margin: 2rem auto;
+  background-color: var(--myGreen);
+  opacity: .75;
+  border-top: 1px solid var(--myWhite);
+  max-width: 775px;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+footer a {
+  opacity: 1;
+  color: var(--myBlack);
+  font-weight: bold;
 }
 /* Posts */
 .postTitle {
