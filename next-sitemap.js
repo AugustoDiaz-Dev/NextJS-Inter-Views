@@ -1,4 +1,4 @@
-const siteUrl = "https://vercel.com/augustodiaz-dev/next-js-inter-views";
+const siteUrl = "https://inter-views.vercel.app/";
 
 module.exports = {
   siteUrl,
