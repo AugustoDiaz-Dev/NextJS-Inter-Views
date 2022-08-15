@@ -1,10 +1,11 @@
 import { getAllPosts, PostMeta } from "@/src/api";
 import Articles from "@/src/components/articles";
+import MainTitle from "@/src/components/MainTitle";
 
 export default function Home({ posts }: { posts: PostMeta[] }) {
     return (
         <>
-            <h1>Inter-Views</h1>
+            <MainTitle />
             <Articles posts={posts} />
         </>
     );
