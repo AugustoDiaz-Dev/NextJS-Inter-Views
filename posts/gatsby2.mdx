@@ -161,8 +161,13 @@ export default function Navbar() {
 
 ## Gatsby Plugins & Sources.
 
+Plugins have to be installed using npm and then they are registered in gatsby-config.js, they can be registered as strings or objects.
 
+- **gatsby-source-fylesystem** Is a plugin for sourting data into your Gatsby application from your local filesystem. For GraphQL when you add any plugin you will get a "allFile" and "file" fields to query. 
 
+- **gatsby-transformer-remark** Transformer plugins take a data source and they transform into something easy to use in our component and that we can query in our GraphQL layer. 
+
+- **gatsby-image** It handles the hard parts of producing images in multiple sizes and formats for you! also you might need to install gatsby-transformer-sharp and gatsby-plugin-sharp to work with them.
 
 ## Take aways. 
 
