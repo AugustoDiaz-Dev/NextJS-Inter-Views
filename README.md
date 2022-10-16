@@ -1,4 +1,4 @@
-# NextJS Inter-Views
+# Inter-Views (NextJS + TS)
 
 ## TOOLS: 
 - NextJS
